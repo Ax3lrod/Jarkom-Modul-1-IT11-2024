@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/1cd41500-1234-4500-9204-c5fdddf50dcf)# Jarkom-Modul-1-IT11-2024
+# Jarkom-Modul-1-IT11-2024
 
 IT 11
 Aryasatya Alaauddin 5027231082
