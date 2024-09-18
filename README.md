@@ -485,5 +485,67 @@ ex. proFTPd 1.1.0
 
 Setelah memfilter file FTP dan melakukan follow saya menemukan jawabannya:
 
+![image](https://github.com/user-attachments/assets/a4bdd376-7f66-4863-9711-4b4f3bae0819)
 
+Pertanyaan2:
+```
+Apa nama file yang dikirim oleh attacker?
+Format: filename.extension
+```
 
+Masih menggunakan filter FTP saya menemukan nama file yang dikirim oleh attacker:
+![image](https://github.com/user-attachments/assets/37165c26-5ead-4ea3-9d35-69bb97572438)
+
+Pertanyaan3:
+```
+Apa pesan rahasia yang ditinggalkan oleh attacker?
+Format: string ex. h4lo wor1d
+```
+
+Memfilter menggunakan FTP-DATA saya menemukan isi g0tcha.cpp :
+```
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+string generateString() {
+    auto tochip = [](int num) -> string {
+        string chipStr;
+        if (num < 0 || num > 255) return "";
+        char buffer[3];
+        snprintf(buffer, sizeof(buffer), "%02x", num);
+        chipStr = buffer;
+        return chipStr;
+    };
+
+    vector<int> chipParts = {103, 48, 116, 99, 104, 117, 32, 110, 48, 119, 32, 108, 49, 116, 116, 108, 51, 32, 109, 48, 117, 115, 51};
+
+    string result;
+    for (int part : chipParts) {
+        result += static_cast<char>(part);
+    }
+
+    return result;
+}
+
+int main() {
+    string result = generateString();
+
+    cout << result << endl;
+
+    return 0;
+}
+```
+
+Program ini saya coba jalankan di https://www.programiz.com/cpp-programming/online-compiler/ dan mendapatkan string g0tchu n0w l1ttl3 m0us3
+
+![image](https://github.com/user-attachments/assets/a5895577-6b41-4d39-8a0a-31376a2b637f)
+
+Menginputkan string tersebut memberikan saya flagnya:
+```
+Apa pesan rahasia yang ditinggalkan oleh attacker?
+Format: string ex. h4lo wor1d
+> g0tchu n0w l1ttl3 m0us3
+Benar! Ini flag-mu: JarkomIT{l1ttl3_m0us3_1n_th3_h0us3_gggrQxvaVoZGLvLl9CM4dAIEtG0uNS6meuS13AP3PqEKpVnv4eeQTCHU}
+```
