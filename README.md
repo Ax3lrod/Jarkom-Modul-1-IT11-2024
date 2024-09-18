@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/49c1707c-177a-4ca3-8bd7-88c6d7de9389)# Jarkom-Modul-1-IT11-2024
+![image](https://github.com/user-attachments/assets/1cd41500-1234-4500-9204-c5fdddf50dcf)# Jarkom-Modul-1-IT11-2024
 
 IT 11
 Aryasatya Alaauddin 5027231082
@@ -548,4 +548,67 @@ Apa pesan rahasia yang ditinggalkan oleh attacker?
 Format: string ex. h4lo wor1d
 > g0tchu n0w l1ttl3 m0us3
 Benar! Ini flag-mu: JarkomIT{l1ttl3_m0us3_1n_th3_h0us3_gggrQxvaVoZGLvLl9CM4dAIEtG0uNS6meuS13AP3PqEKpVnv4eeQTCHU}
+```
+
+## Illegal Breakthrough
+![image](https://github.com/user-attachments/assets/1c06ad8b-85c8-473f-a4e3-cf3178719076)
+
+Pertanyaan 1:
+```
+===== Illegal Breakthrough =====
+Note: You can exit anytime by typing 'exit'
+
+Apa IP address dari korban?
+Format: xxx.xxx.xxx.xxx
+```
+
+Setelah memeriksa file pcapng saya menemukan ip address destination dari setiap brute force attemp adalah 172.21.88.207
+![image](https://github.com/user-attachments/assets/de341a88-45b7-4f30-85f6-ed4ecd2e5037)
+
+Pertanyaan 2:
+```
+Apa port yang digunakan sebagai webserver?
+Format: xxxx: ex. 443
+```
+
+![image](https://github.com/user-attachments/assets/23d93ac4-e2a1-443d-ba57-d774edb3d074)
+
+Dari paket yang sama saya menemukan bahwa port dari webserver korban adalah 1917
+
+Pertanyaan 3:
+```
+Dimana endpoint yang terdapat login?
+Format: /endpoint/path.php
+```
+Karena setiap percobaan bruteforce dilakukan di /ww1.php maka saya coba itu sebaga input dan ternyata benar jawabannya:
+
+![image](https://github.com/user-attachments/assets/edc03e72-a67f-40d4-a3e6-5f9fff189ce2)
+
+Pertanyaan 4:
+```
+Tools apa yang digunakan oleh attacker?
+Format: toolsname-version ex. hydra-v9.0-dev
+```
+
+Setelah saya melakukan follow pada packet percobaan bruteforce, saya menemukan:
+
+![image](https://github.com/user-attachments/assets/eb1dba61-66b1-414e-8fac-53844b43a920)
+
+Setelah memeriksa di internet saya menemukan bahwa nama lain dari Fuzz Faster U Fool v2.1.0-dev adalah ffuf-v2.1.0-dev
+
+Pertanyaan 5:
+```
+Apa kredensial yang berhasil digunakan oleh attacker untuk login?
+Format: username:password
+```
+
+Di attempt terakhir sebelum berhasil login, attacker memasukkan kredensial berikut:
+![image](https://github.com/user-attachments/assets/f2ac341a-f853-4976-8439-d7fe5a49d6db)
+
+memberikan input tersebut sesuai format memberikan saya flagnya:
+```
+Apa kredensial yang berhasil digunakan oleh attacker untuk login?
+Format: username:password
+> Redbaron:fly1ng4c3
+Benar! Ini flag-mu: JarkomIT{d34th_fr0m_th3_sky_wo0eOYeGT17Dab3i2VWhkLtQaH1R1MDOx8eWW5pCSSOzLTxXl4EbWW1}
 ```
