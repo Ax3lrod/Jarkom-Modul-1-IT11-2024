@@ -612,3 +612,56 @@ Format: username:password
 > Redbaron:fly1ng4c3
 Benar! Ini flag-mu: JarkomIT{d34th_fr0m_th3_sky_wo0eOYeGT17Dab3i2VWhkLtQaH1R1MDOx8eWW5pCSSOzLTxXl4EbWW1}
 ```
+
+# Packets Barrage
+![image](https://github.com/user-attachments/assets/325de92a-e01f-4ec6-a2ba-be8938f6091b)
+
+Chall menggunakan file pcapng yang sama dengan challenge Illegal Breakthrough
+Menjalankan Ncat yang diberikan saya mendapatkan pertanyaan
+
+Pertanyaan 1:
+```
+Apa IP address dari attacker?
+Format: xxx.xxx.xxx.xxx
+```
+Dengan memeriksa file pcapng yang diberikan menggunakan wireshark saya melihat request http POST ke ww1.php dimana attacker berusaha melakukan login dengan bruteforce. Dari setiap paket tersebut, source IP addressnya adalah 172.21.80.1
+![image](https://github.com/user-attachments/assets/1b3ad50a-c3b1-43b7-948d-013a2568286c)
+
+Menginput IP tersebut, saya mendapatkan pertanyaan berikutnya
+
+Pertanyaan 2:
+```
+Berapa total attempt dari bruteforce attacker?
+Format: number
+```
+Langkah pertama yang saya lakukan adalah melakukan filter untuk melihat semua paket http protocol yang melakukan request POST. Dari sana saya mendapatkan 1918 file. Namun ketika menginputkan 1918 itu bukan jawaban yang benar, tetapi ketika saya mengurangi 1 kepada jumlahnya menjadi 1917 saya mendapatkan jawaban yang benar.
+![image](https://github.com/user-attachments/assets/2282e1d7-5ad9-41f1-9b76-5bb926c2345a)
+
+Pertanyaan 3:
+```
+Apa nama file yang didownload oleh attacker setelah berhasil login?
+Format: filename.extension
+```
+Langkah pertama saya adalah melihat apa yang dilakukan attacker setelah berhasil login. Disana saya menemukan bahwa attacker melakukan http protocol dengan request GET untuk mengunduh sebuah file. Melakukan follow pada paket tersebut saya menemukan bahwa paket yang diunduh adalah Albatros.txt.
+
+![image](https://github.com/user-attachments/assets/70ab65e4-d768-4a54-9d1e-0a790bb503a7)
+
+Pertanyaan 4:
+```
+Apa isi dari file yang disisipkan oleh attacker?
+Format: string ex. sine sole nihil sum
+```
+
+Untuk jawaban dari pertanyaan ini saya temukan di tempat yang sama dengan jawaban sebelumnya. Isi dari filenya adalah Der "Rote Kampfflieger".
+
+![image](https://github.com/user-attachments/assets/7444ddfe-3076-495d-8f96-9acec038ec66)
+
+Menjawab pertanyaan tersebut memberikan saya flagnya:
+```
+Apa isi dari file yang disisipkan oleh attacker?
+Format: string ex. sine sole nihil sum
+> Der Rote Kampfflieger
+Benar! Ini flag-mu: JarkomIT{th3_fly1ng_c1rcus_0f_w4r_bk0OU68kOzKM02fZGQfuQAdDK5Stjl7pKLukrtDexxEwPg2cKxddRACE}
+```
+
+
