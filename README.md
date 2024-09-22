@@ -664,4 +664,73 @@ Format: string ex. sine sole nihil sum
 Benar! Ini flag-mu: JarkomIT{th3_fly1ng_c1rcus_0f_w4r_bk0OU68kOzKM02fZGQfuQAdDK5Stjl7pKLukrtDexxEwPg2cKxddRACE}
 ```
 
+# 22 Nightmare
 
+![image](https://github.com/user-attachments/assets/d22c6fef-f4df-4183-999b-03bccdc1ed18)
+
+Pertanyaan 1:
+```
+===== 22 Nightmare =====
+Note: You can exit anytime by typing 'exit'
+
+File yang dikirim penyerang?
+Format: filename.extension
+```
+
+Langkah pertama saya adalah memfilter file pcapngnya dengan protokol FTP.
+![image](https://github.com/user-attachments/assets/38226ccd-2192-4df1-aa36-3fed4bda136f)
+
+Saya menemukan transfer file Sh1k4.jpg dan menginputkan nama file beserta extensionnya saya mendapatkan pertanyaan berikutnya:
+
+Pertanyaan 2:
+```
+Apa nama file yang dikirim?
+Format: string
+```
+
+Saya mencoba menginputkan nama 2 file yang terbaca di paket FTP (Sh1k4 dan noko). Namun keduanya bukan merupakan jawaban yang benar, jadi saya coba mengexport kedua file tersebut. File Sh1k4.jpg membentuk gambar yang memiliki tulisan "NUN". Menginputkan NUN saya mendapatkan pertanyaan berikutnya.
+
+Pertanyaan 3:
+```
+Pada stream keberapa file kedua dikirim setelah file pertama?
+Format: Number
+```
+
+Langkah pertama saya adalah melakukan follow pada paket FTP file kedua (noko.py) disana saya mendapatkan info urutan streamnya.
+![image](https://github.com/user-attachments/assets/60283304-2d36-4e45-b65a-8c42f80924f0)
+Jawabannya adalah 141
+
+Pertanyaan 4:
+```
+Siapa asli nama pengirim?
+Format: string ex. Nathan Kho
+```
+
+Clue yang saya dapatkan adalah dari noko.py:
+
+```
+Import Shika
+
+Class Noko
+    input = int
+    key = String
+    value = String
+    
+    # input = 001001100011010000100010001000100011101001101110001001110011100001101110000110100011101000111100001011110011111000100001011011100001111000100001001111010011110100100111
+    
+    key = jpg msg
+    
+    op xor bit
+```
+
+Berdasarkan code ini saya mendapatkan ide untuk mendekripsi string binary yang diberikan menggunakan dekripsi xor dengan key dari message yang ada di Sh1k4.jpg yaitu "nun".
+Mendecrypt binarnynya menggunakan website https://md5decrypt.net/en/Xor/.
+![image](https://github.com/user-attachments/assets/daba05db-5f62-445a-8f3c-2798b8e626e5)
+
+Berdasarkan hasil decryptnya saya menginputkan Torako Koshi dan mendapatkan flagnya.
+```
+Siapa asli nama pengirim?
+Format: string ex. Nathan Kho
+> Torako Koshi
+Benar! Ini flag-mu: JarkomIT{Sh1k4n0ko_N0_k05h1tan_Bbj8uCVbnUZMJoWxhtCebOb087AnGDCHw5q4zZm1c3sFEs97kmva9UNU}
+```
