@@ -664,6 +664,8 @@ Format: string ex. sine sole nihil sum
 Benar! Ini flag-mu: JarkomIT{th3_fly1ng_c1rcus_0f_w4r_bk0OU68kOzKM02fZGQfuQAdDK5Stjl7pKLukrtDexxEwPg2cKxddRACE}
 ```
 
+# Revisi
+
 # 22 Nightmare
 
 ![image](https://github.com/user-attachments/assets/d22c6fef-f4df-4183-999b-03bccdc1ed18)
@@ -733,4 +735,79 @@ Siapa asli nama pengirim?
 Format: string ex. Nathan Kho
 > Torako Koshi
 Benar! Ini flag-mu: JarkomIT{Sh1k4n0ko_N0_k05h1tan_Bbj8uCVbnUZMJoWxhtCebOb087AnGDCHw5q4zZm1c3sFEs97kmva9UNU}
+```
+
+# inneRCE
+![image](https://github.com/user-attachments/assets/17171ef8-4419-4344-ba5e-caf809f6cbe7)
+
+Pertanyaan 1:
+```
+Kapan hacker berhasil mengupload webshell?
+Format: Format: YYYY-MM-DD HH:MM:SS
+```
+
+Saya menemukan tanggalnya di paket protokol HTTP yang memberikan respons OK setelah upload.php berhasil dijalankan.
+![image](https://github.com/user-attachments/assets/75f931c5-9aff-4434-84e7-8989e4ca51aa)
+
+Pertanyaan 2:
+```
+Endpoint url dan server mana yang rentan sehingga dapat dihack oleh hacker?
+Format: /path.php_hostname
+```
+
+Untuk url yang rentan adalah upload.php karena itu yang digunakan oleh attacker untuk mengupload webshell. Untuk hostnamenya dapat ditemukan setelah attacker menjalankan command
+```
+hostname
+```
+
+Nama hostname nya adalah server-app.
+```
+Endpoint url dan server mana yang rentan sehingga dapat dihack oleh hacker?
+Format: /path.php_hostname
+> /upload.php_server-app
+```
+
+Pertanyaan 3:
+```
+Nama webshell yang diupload oleh hacker?
+Format: file.extension
+```
+
+Dengan memfilter menggunakan HTTP saya menemukan bahwa webshell yang diupload adalah idzoyyshell.php.
+![image](https://github.com/user-attachments/assets/f6118c84-4f54-40f4-8ecf-d3fb6bd7d6f3)
+
+Pertanyaan 4:
+```
+Command pertama yang berhasil dieksekusi oleh hacker?
+Format: string
+```
+
+Dengan memfilter paket protokol HTTP saya menemukan bahwa command pertama yang dijalankan setelah berhasil mengupload webshell adalah "whoami".
+![image](https://github.com/user-attachments/assets/bbcc2246-162a-4bc5-8f76-dcd5c4b6e12f)
+
+Pertanyaan 5:
+```
+> whoami
+Berdasarkan log, hacker tersebut mencoba menuliskan pesan, apa pesan yang hacker coba tuliskan?
+Format: string ex. kata kata
+```
+Clue yang saya dapatkan untuk mendapatkan jawaban pertanyaan ini ada pada salah satu command webshell "echo".
+![image](https://github.com/user-attachments/assets/74fdc95c-c571-4500-bde8-2b7b0f491f1f)
+Dimana attacker melakukan echo untuk string 
+```
+cGxzIHJhdGUgc29hbCBpbmkK
+```
+
+Jika saya mendekripsinya dengan base64 saya mendapatkan string.
+```
+pls rate soal ini
+
+```
+
+Menginput string itu saya mendapatkan flagnya.
+```
+Berdasarkan log, hacker tersebut mencoba menuliskan pesan, apa pesan yang hacker coba tuliskan?
+Format: string ex. kata kata
+> pls rate soal ini
+Benar! Ini flag-mu: JarkomIT{P4L1nG_g4mPaNg_An4L1sA_W3b_aTk_nQb6SoEfLhsXKTvK8NYv3VtnMW4itdmxGkhmlWLRjkG1XXmIxewuaRCE}
 ```
